@@ -10,6 +10,11 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     shippingInfo,
     orderItems,
     paymentInfo,
+
+
+
+
+    
     itemsPrice,
     taxPrice,
     shippingPrice,

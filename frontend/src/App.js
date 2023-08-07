@@ -84,13 +84,13 @@ function App() {
           exact
           path='/process/payment'
           element={
-            stripeApiKey && (
+             
               <Elements 
               stripe={loadStripe(stripeApiKey)}
               >
                 <Payment />
               </Elements>
-            )
+            
           }
         />
         <Route exact path='/success' element={<OrderSuccess />} />
