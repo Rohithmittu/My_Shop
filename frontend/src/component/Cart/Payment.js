@@ -54,7 +54,7 @@ const Payment = () => {
 
     try {
       const config = {
-        header: {
+        headers: {
           "Content-type": "application/json",
         },
       };

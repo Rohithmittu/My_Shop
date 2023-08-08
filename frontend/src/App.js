@@ -25,7 +25,8 @@ import ConfirmOrder from "./component/Cart/ConfirmOrder.js";
 import axios from "axios";
 import Payment from "./component/Cart/Payment.js";
 import OrderSuccess from "./component/Cart/OrderSuccess.js";
-// import { Elements } from "@stripe/react-stripe-js";
+import MyOrders from "./component/Order/MyOrders.js";
+import OrderDetails from "./component/Order/OrderDetails.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
@@ -78,22 +79,23 @@ function App() {
         />
 
         <Route exact path='/shipping' element={<Shipping />} />
-        <Route exact path='/order/confirm' element={<ConfirmOrder />} />
 
         <Route
           exact
           path='/process/payment'
           element={
             stripeApiKey && (
-              <Elements 
-              stripe={loadStripe(stripeApiKey)}
-              >
+              <Elements stripe={loadStripe(stripeApiKey)}>
                 <Payment />
               </Elements>
             )
           }
         />
         <Route exact path='/success' element={<OrderSuccess />} />
+        <Route exact path='/orders' element={<MyOrders />} />
+
+        <Route exact path='/order/confirm' element={<ConfirmOrder />} />
+        <Route exact path='/order/:id' element={<OrderDetails />} />
       </Routes>
       <Footer />
     </Router>
