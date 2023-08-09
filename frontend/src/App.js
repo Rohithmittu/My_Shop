@@ -56,13 +56,17 @@ function App() {
       <Header />
       <Routes>
         <Route
-          path='/products'
+         
           element={isAuthenticated && <UserOptions user={user} />}
         />
         <Route exact path='/' element={<Home />} />
         <Route exact path='/product/:id' element={<ProductDetails />} />
-        <Route path='/products/:keyword' element={<Products />} />
+
+
+        <Route  path='/products/:keyword' element={<Products />} />
         <Route exact path='/products' element={<Products />} />
+        
+        
         <Route exact path='/search' element={<Search />} />
         <Route exact path='/login' element={<LoginSignUp />} />
 

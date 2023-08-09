@@ -14,8 +14,8 @@ const Search = () => {
   const searchSubmitHandler = e => {
     e.preventDefault();
     if (keyword.trim()) {
-      // history.push(`./products/${keyword}`);
-      history(`./products/${keyword}`);
+      
+      history(`/products/${keyword}`);
     } else {
       // history.push(`/products`);
       history(`/products`);
