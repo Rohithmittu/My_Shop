@@ -34,7 +34,6 @@ const ProductDetails = ({ match }) => {
   const { success, error: reviewError } = useSelector(state => state.newReview);
 
   const options = {
-    
     size: "large",
     value: product.ratings,
 
@@ -93,12 +92,12 @@ const ProductDetails = ({ match }) => {
       alert.error(reviewError);
       dispatch(clearErrors());
     }
-    if(success){
-      alert.success("review submitted Successfully")
-      dispatch({type: NEW_REVIEW_RESET})
+    if (success) {
+      alert.success("review submitted Successfully");
+      dispatch({ type: NEW_REVIEW_RESET });
     }
     dispatch(getProductDetails(id));
-  }, [dispatch, id, error, alert,reviewError,success]);
+  }, [dispatch, id, error, alert, reviewError, success]);
 
   return (
     <Fragment>
@@ -129,7 +128,9 @@ const ProductDetails = ({ match }) => {
               <div className='detailsBlock-2'>
                 <Rating {...options} />
 
-                <span className="detailsBlock-2-span">({product.numOfReviews} Reviews)</span>
+                <span className='detailsBlock-2-span'>
+                  ({product.numOfReviews} Reviews)
+                </span>
               </div>
               <div className='detailsBlock-3'>
                 <h1>{`${product.price}`}</h1>
@@ -194,7 +195,9 @@ const ProductDetails = ({ match }) => {
           {product.reviews && product.reviews[0] ? (
             <div className='reviews'>
               {product.reviews &&
-                product.reviews.map(review => <ReviewCard review={review} />)}
+                product.reviews.map(review => (
+                  <ReviewCard key={review._id} review={review} />
+                ))}
             </div>
           ) : (
             <p className='noReviews'> No Review Yet </p>

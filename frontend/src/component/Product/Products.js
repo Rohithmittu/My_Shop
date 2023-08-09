@@ -7,11 +7,10 @@ import ProductCard from "../Home/ProductCard";
 import Pagination from "react-js-pagination";
 import { useParams } from "react-router-dom";
 import {useAlert} from "react-alert"
-import Slider from "rc-slider";
 
-// import Slider from "@mui/icons-material";
-// import SliderValueLabel from "@mui/material/Slider/SliderValueLabel";
-// import Slider from "@material-ui/core"
+import Slider from '@mui/material/Slider';
+
+
 import { Typography } from "@mui/material";
 import MetaData from "../layout/MetaData";
 
@@ -26,7 +25,7 @@ const categories = [
   "SmartPhones",
 ]
 
-const Products = ({ match }) => {
+const Products = () => {
   const dispatch = useDispatch();
   const alert = useAlert()
 
@@ -44,10 +43,10 @@ const Products = ({ match }) => {
     error,
     productsCount,
     resultPerPage,
-    // filteredProductsCount,
+    filteredProductsCount,
   } = useSelector(state => state.products);
 
-  // const keyword = match.params.keyword
+  
 
   const setCurrentPageNo = e => {
     setCurrentPage(e);
@@ -65,21 +64,8 @@ const Products = ({ match }) => {
     dispatch(getProduct(product_keyword, currentPage, price,category,ratings));
   }, [dispatch, product_keyword, currentPage, price,category,ratings,alert,error]);
 
-  // let count = filteredProductsCount
+  let count = filteredProductsCount
 
-  // const options = {
-  //   activePage: { currentPage },
-  //   itemCountPerPage: { resultPerPage },
-  //   totalItemCount: { productsCount },
-  //   onChange: { setCurrentPageNo },
-  //   nextpagetext: "Next",
-  //   prevpagetext: "Prev",
-  //   lastpagetext: "Last",
-  //   itemclass: "page-item",
-  //   linkclass: "page-link",
-  //   activeclass: "pageItemActive",
-  //   activelinkclass: "pageLinkActive",
-  // };
   return (
     <Fragment>
       {loading ? (
@@ -97,14 +83,7 @@ const Products = ({ match }) => {
 
           <div className='filterBox'>
             <Typography>Price</Typography>
-            {/* <Slider
-              value={price}
-              onChange={priceHandler}
-              valueLabelDisplay='auto'
-              aria-labelledby='range-slider'
-              min={0}
-              max={25000}
-            /> */}
+            
             <Slider
               value={price}
               onChange={priceHandler}
@@ -113,7 +92,7 @@ const Products = ({ match }) => {
               min={0}
               max={25000}
              />
-            {/* <Range /> */}
+         
           </div>
 
           <Typography>Categories</Typography>
@@ -151,7 +130,7 @@ const Products = ({ match }) => {
 
           </fieldset>
 
-          {resultPerPage < productsCount && (
+          {resultPerPage < count && (
             <div>
               <Pagination
                 activePage={currentPage}
@@ -166,7 +145,7 @@ const Products = ({ match }) => {
                 linkClass='page-link'
                 activeClass='pageItemActive'
                 activeLinkClass='pageLinkActive'
-                // {...options}
+                
               />
             </div>
           )}
