@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "please Enter your Name"],
     maxLength: [30, "Name cannot exceed 30 characters"],
-    minLength: [4, "Name should ahve min 4 characters"],
+    minLength: [4, "Name should above min 4 characters"],
   },
   email: {
     type: String,
@@ -82,4 +82,4 @@ userSchema.methods.getResetPasswordToken = function () {
   return resetToken;
 };
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("User", userSchema);
